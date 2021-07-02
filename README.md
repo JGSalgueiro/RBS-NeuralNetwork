@@ -9,7 +9,7 @@ Rutherford backscattering spectrometry (RBS) is an analytical technique used in 
 - The development of this project was done using the Tensorflow and Keras software libraries.
 
 ### Requirements: 
-- tensorflow (v.2.0 and higher)
+- tensorflow (version 2.0 or higher)
 - numpy 
 
 ## Credits and References
