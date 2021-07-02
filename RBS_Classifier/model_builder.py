@@ -2,7 +2,7 @@
 * RBS_Classifier                                                     *
 * tensorflow (version 2.0 or higher) and kerastuner                  *
 * Author : João Geraldes Salgueiro <joao.g.salgueiro@webmail.com>    *
-* All rights reserved to C2TN                                        *
+* Developed with the help of C2TN                                    *
 **********************************************************************
 import numpy as np 
 import tensorflow as tf 
