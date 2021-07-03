@@ -17,6 +17,9 @@ Rutherford backscattering spectrometry (RBS) is an analytical technique used in 
 - N.P. Barradas, R.N. Patricio, H.F.R. Pinho, A .Vieira , General artificial neural network for analysis of RBS data, http://projects.ctn.tecnico.ulisboa.pt/Vcorregidor/FCT/3D-NM/26.pdf
 - N.P. Barradas, A .Vieira , Artificial neural network analysis of RBS data of Er-implanted sapphire, https://www.sciencedirect.com/science/article/abs/pii/S0168583X00005486
 
+## Experimental condtions for use
+--TO-DO--
+
 ## Installation
 --TO-DO--
 
