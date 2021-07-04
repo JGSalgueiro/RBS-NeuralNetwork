@@ -18,7 +18,11 @@ Rutherford backscattering spectrometry (RBS) is an analytical technique used in 
 - N.P. Barradas, A .Vieira , Artificial neural network analysis of RBS data of Er-implanted sapphire, https://www.sciencedirect.com/science/article/abs/pii/S0168583X00005486
 
 ## Experimental condtions for use
---TO-DO--
+- Proton beam with 2MeV of energy;
+- Particle detector angle: 140º;
+- Angle of incidence: 0º;
+- Detector resolution: 30 keV;
+- Collected charge: 0.1 microCoulomb;
 
 ## Installation
 --TO-DO--
