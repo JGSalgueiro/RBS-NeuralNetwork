@@ -1,5 +1,5 @@
 #******************************************************************************
-#* RBS_Classifier                                                             *
+#* RBS_Model Builder                                                          *
 #* tensorflow (version 2.0 or higher) and kerastuner                          *
 #* Author : João Geraldes Salgueiro <joao.g.salgueiro@tecnico.ulisboa.com>    *
 #* Developed with the help of C2TN                                            *
@@ -16,10 +16,9 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 from tensorflow import keras
 import os
 
-DATADIR = "/home/jgsalgueiro/Desktop/RBS_ANN/RBS_NeuralNetwork/Training/TrainingSet" #FIX DIRS
-TESTDIR = "/home/jgsalgueiro/Desktop/RBS_ANN/RBS_NeuralNetwork/Training/TestSet"     #FIX DIRS
-CATEGORIES = ["ag5au", "ag10au", "ag15au", "ag20au", "ag25au", "ag30au", "ag35au", "ag40au", "ag45au", "ag50au", "ag55au", "ag60au", "ag65au", "ag70au", "ag75au", "ag80au", "ag85au", "ag90au", "ag95au", "ag100au", 
-              "cu5au", "cu10au", "cu15au", "cu20au", "cu25au", "cu30au", "cu35au", "cu40au", "cu45au", "cu50au", "cu55au", "cu60au", "cu65au", "cu70au", "cu75au", "cu80au", "cu85au", "cu90au", "cu95au", "cu100au"]
+DATADIR = "Training/TrainingSet" 
+TESTDIR = "Training/TestSet"     
+CATEGORIES = ["cu5au", "cu10au", "cu15au", "cu20au", "cu25au", "cu30au", "cu35au", "cu40au", "cu45au", "cu50au", "cu55au", "cu60au", "cu65au", "cu70au", "cu75au", "cu80au", "cu85au", "cu90au", "cu95au", "cu100au"]
 CLASSIFICATION = [0.05,0.10,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.75,0.80,0.85,0,90,0.95,1.00]
 
 CHANNELS = 1024
@@ -40,11 +39,11 @@ def find_MAX(spectra_set):
 	return MAX
 
 
-def normalize(spectra_set, MAX):
+def normalize(spectra_set):
 	sets = []
 
 	for i in spectra_set:
-		sets.append(np.true_divide(i, MAX))
+		sets.append(np.true_divide(i, np.amax(i)))
 
 	return np.array(sets).reshape(-1, 1024, 1)
 
@@ -173,7 +172,7 @@ def main():
 	global test_label
 
 	print(datetime.now().strftime("%H:%M:%S") , " - " , "Loading data ...")
-	#load_sets()
+	load_sets()
 	
 	pickle_in = open("Train_Spectra.pickle", "rb")
 	train_spectra = np.array(pickle.load(pickle_in))
@@ -184,15 +183,10 @@ def main():
 	pickle_in = open("Test_Label.pickle", "rb")
 	test_label = np.array(pickle.load(pickle_in))
 
+	train_spectra = normalize(train_spectra)
+	test_spectras = normalize(test_spectra)
 
 
-	MAX_TRAIN = find_MAX(train_spectra)
-	MAX_TEST = find_MAX(test_spectra)
-
-	train_spectra = normalize(train_spectra, MAX_TRAIN)
-	test_spectras = normalize(test_spectra, MAX_TEST)
-
-	"""
 	print(datetime.now().strftime("%H:%M:%S") , " - " , "Loaded training spectras with shape : " ,train_spectra.shape)
 	print(datetime.now().strftime("%H:%M:%S") , " - " , "Loaded testing spectras with shape  : " ,test_spectra.shape)
 	print(datetime.now().strftime("%H:%M:%S") , " - " , "Will now start training model. ")
@@ -200,15 +194,11 @@ def main():
 	model.save('./best_model')
 	print(datetime.now().strftime("%H:%M:%S") , " - " , "Saved model : SUCESS")
 	print(datetime.now().strftime("%H:%M:%S") , " - " , "Model Training - SUCESS : will now avaluate the performance. ")
+	
 
 
-
-
-	"""
-
-
-	loaded_model = keras.models.load_model('./best_model')
-	print(loaded_model.evaluate(train_spectra, train_label))
+	#loaded_model = keras.models.load_model('./best_model')
+	print(model.evaluate(train_spectra, train_label))
 
 
 
