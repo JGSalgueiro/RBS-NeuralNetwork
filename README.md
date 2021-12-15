@@ -48,7 +48,9 @@ Rutherford backscattering spectrometry (RBS) is an analytical technique used in 
  > python3 classifier.py
 
 ## Experimental Applications and Results
---TO-DO--
+ -  The experiemental results were presented in the following poster (submited for the [IBA&PIXE - SIMS 2021](http://iba2021.iopconfs.org/home) scientific convention : 
+  
+ ![alt text](http://url/to/img.png)
 
 
 ## License
