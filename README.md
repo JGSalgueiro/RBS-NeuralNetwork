@@ -50,7 +50,7 @@ Rutherford backscattering spectrometry (RBS) is an analytical technique used in 
 ## Experimental Applications and Results
  -  The experiemental results were presented in the following poster (submited for the [IBA&PIXE - SIMS 2021](http://iba2021.iopconfs.org/home) scientific convention : 
   
- ![alt text](http://url/to/img.png)
+ ![poster](P24_neural_corregidor.JPG)
 
 
 ## License
